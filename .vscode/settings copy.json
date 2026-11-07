@@ -1,0 +1,22 @@
+{
+    "editor.inlayHints.enabled": "off",
+    "editor.inlineSuggest.enabled": false,
+    "editor.parameterHints.enabled": false,
+    "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.wordBasedSuggestions": "off",
+    "[csharp]": {
+        "editor.inlayHints.enabled": "off",
+        "editor.parameterHints.enabled": false,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.suggestOnTriggerCharacters": false
+    }
+}

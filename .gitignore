@@ -1,0 +1,12 @@
+[Bb]in/
+[Oo]bj/
+.vs/
+[Tt]est[Rr]esults/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dll
+*.exe
+*.pdb
+*.cache
