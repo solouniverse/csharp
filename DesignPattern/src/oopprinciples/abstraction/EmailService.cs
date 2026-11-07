@@ -6,23 +6,25 @@ public class EmailService
 {
     public void SendEmail()
     {
+        Connect();
+        Authenticate();
         Console.WriteLine("Sending email...");
+        Disconnect();
     }
 
-    public void Connect()
+    private void Connect()
     {
         Console.WriteLine("Connecting to email server...");
     }
 
-    public void Authenticate()
+    private void Authenticate()
     {
         Console.WriteLine("Authenticating...");
     }
 
-    public void Disconnect()
+    private void Disconnect()
     {
         Console.WriteLine("Disconnecting from email server...");
     }
-
 
 }
