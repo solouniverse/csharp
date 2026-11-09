@@ -83,6 +83,33 @@ Abstraction and encapsulation are related but different:
 | Abstraction | Hides unnecessary complexity and exposes what a class can do |
 | Encapsulation | Protects data and controls how its state can be changed |
 
+## `is-a` and `has-a` relationships
+
+Abstraction describes behavior without deciding the relationship between every pair of classes. A helpful relationship check is:
+
+| Relationship | Question | Example in this guide |
+|---|---|---|
+| `is-a` | Is this object a type of the other object? | An `EmailService` is a service that can send messages. |
+| `has-a` | Does this object contain or collaborate with another object? | An application has an `EmailService` dependency. |
+
+Inheritance relationships use `is-a`; composition and collaboration often use `has-a`. `SendEmail()` shows abstraction for what a caller can do, while the caller can compose the service into another object without knowing its private connection, authentication, and sending steps.
+
+## UML: Unified Modeling Language
+
+UML is a standard language for modeling object-oriented systems. Class diagrams show classes, their operations, and relationships between classes.
+
+```mermaid
+classDiagram
+    class EmailService {
+        +SendEmail()
+        -Connect()
+        -Authenticate()
+        -Disconnect()
+    }
+```
+
+In this diagram, `+` marks public members and `-` marks private members. `SendEmail()` exposes the abstraction, while the supporting operations remain hidden.
+
 ## Summary
 
 Abstraction allows a program to be used through simple, meaningful operations while complex implementation details remain hidden inside a class. In this example, `SendEmail()` provides a simple public operation that internally connects, authenticates, sends, and disconnects.

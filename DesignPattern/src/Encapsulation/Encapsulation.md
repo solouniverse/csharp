@@ -102,6 +102,33 @@ flowchart LR
 | Validation | Checking whether a value or operation is allowed |
 | Object state | The current values stored in an object's fields |
 
+## `is-a` and `has-a` relationships
+
+Encapsulation can protect the parts involved in both kinds of relationships:
+
+| Relationship | Question | Example |
+|---|---|---|
+| `is-a` | Is the object a specialized type of another object? | A `SavingsAccount` is a type of `BankAccount`. |
+| `has-a` | Does the object own or contain another value or object? | A `BankAccount` has a private balance. |
+
+Encapsulation changes direct access to the object's parts. Even when a class contains another object or value, code outside the class should normally use public operations rather than directly modifying the contained state.
+
+## UML: Unified Modeling Language
+
+UML can model the fields and operations that protect an object's state.
+
+```mermaid
+classDiagram
+    class BankAccount {
+        -decimal balance
+        +GetBalance() decimal
+        +Deposit(decimal amount)
+        +withdraw(decimal amount)
+    }
+```
+
+The leading `-` shows that `balance` is private. The leading `+` shows that account operations are public and provide controlled access to the internal state.
+
 ## Summary
 
 Encapsulation hides an object's internal data and controls how it is accessed. In this example, `balance` remains private, and other code uses methods that validate each change. This protects the object's state and keeps the program reliable.

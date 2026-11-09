@@ -1,6 +1,6 @@
 using System;
 
-namespace DesignPattern.src.oopprinciples.abstraction;
+namespace DesignPattern.src.OopPrinciples.Abstraction;
 
 public class EmailService
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace DesignPattern.src.oopprinciples.encapsulation;
+namespace DesignPattern.src.OopPrinciples.Encapsulation;
 
 public class BankAccount
 {
