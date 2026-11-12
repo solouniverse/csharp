@@ -366,3 +366,8 @@ The relationship can be read as:
 - `Car` is composed of an `Engine`.
 - `Team` has one or more `Players`.
 - `NotificationService` depends on an `INotificationChannel`.
+
+---
+
+| ← [Polymorphism](../Polymorphism/Polymorphism.md) | [Book contents](../../README.md) | [Inheritance versus Composition](../../README.md#10-inheritance-versus-composition) → |
+|---|---|---|

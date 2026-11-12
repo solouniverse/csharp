@@ -132,3 +132,8 @@ The leading `-` shows that `balance` is private. The leading `+` shows that acco
 ## Summary
 
 Encapsulation hides an object's internal data and controls how it is accessed. In this example, `balance` remains private, and other code uses methods that validate each change. This protects the object's state and keeps the program reliable.
+
+---
+
+| ← [Abstraction](../Abstraction/Abstraction.md) | [Book contents](../../README.md) | [Inheritance](../Inheritance/Inheritance.md) → |
+|---|---|---|

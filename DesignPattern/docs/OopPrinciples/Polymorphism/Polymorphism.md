@@ -154,3 +154,8 @@ The shared `Start()` operation is declared by `Vehicle` and implemented by each 
 ## Summary
 
 Polymorphism lets related classes provide different implementations of the same operation. Derived classes can override base methods, and calling code can work with objects through their shared base type.
+
+---
+
+| ← [Inheritance](../Inheritance/Inheritance.md) | [Book contents](../../README.md) | [Composition](../Composition/Composition.md) → |
+|---|---|---|

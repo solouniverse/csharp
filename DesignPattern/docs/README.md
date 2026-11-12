@@ -10,39 +10,53 @@ This repository demonstrates object-oriented programming principles through smal
 **Language:** C# / .NET 10  
 **Project:** `DesignPattern`
 
+> **Ready to run the examples?** See the [Setup and Run Guide](SETUP.md) for prerequisites, .NET SDK installation, and step-by-step commands.
+
 ---
 
-## Table of Contents
+## Reader's Roadmap
+
+Read the chapters in order for a guided introduction. The OOP and SOLID lesson pages include previous/next links and a return link to this contents page.
 
 ### Part I - Foundations
 
-1. [Getting Started](#getting-started)
-2. [Project Structure](#project-structure)
-3. [Object-Oriented Relationships](#object-oriented-relationships)
-4. [UML Reading Guide](#uml-reading-guide)
+1. [Getting Started](#1-getting-started)
+2. [Project Structure](#2-project-structure)
+3. [Object-Oriented Relationships](#3-object-oriented-relationships)
+4. [UML Reading Guide](#4-uml-reading-guide)
+
+**Supplement:** [UML Diagram Readability Guide](UML-Readability-Guide.md)
 
 ### Part II - OOP Principles
 
-5. [Abstraction](#5-abstraction)
-6. [Encapsulation](#6-encapsulation)
-7. [Inheritance](#7-inheritance)
-8. [Polymorphism](#8-polymorphism)
+5. [Abstraction](OopPrinciples/Abstraction/Abstraction.md)
+6. [Encapsulation](OopPrinciples/Encapsulation/Encapsulation.md)
+7. [Inheritance](OopPrinciples/Inheritance/Inheritance.md)
+8. [Polymorphism](OopPrinciples/Polymorphism/Polymorphism.md)
+9. [Composition](OopPrinciples/Composition/Composition.md)
 
-### Part III - Object Design
+### Part III - Design Decisions
 
-9. [Composition](#9-composition)
 10. [Inheritance versus Composition](#10-inheritance-versus-composition)
 11. [Fragile Base Class Problem](#11-fragile-base-class-problem)
 
-### Part IV - Practice
+### Part IV - SOLID Principles
 
-12. [Examples and Exercises](#12-examples-and-exercises)
-13. [Running the Repository](#running-the-repository)
-14. [Concept Reference](#concept-reference)
+12. [Single Responsibility Principle (SRP)](SOLID/S/SingleResponsibilityPrinciple.md)
+13. [Open-Closed Principle (OCP)](SOLID/O/OpenClosedPrinciple.md)
+14. [Liskov Substitution Principle (LSP)](SOLID/L/LiskovSubstitutionPrinciple.md)
+15. [Interface Segregation Principle (ISP)](SOLID/I/InterfaceSegregationPrinciple.md)
+16. [Dependency Inversion Principle (DIP)](SOLID/D/DependencyInversionPrinciple.md)
+
+### Part V - Practice and Reference
+
+17. [Examples and Exercises](#17-examples-and-exercises)
+18. [Running the Repository](#18-running-the-repository)
+19. [Concept Reference](#19-concept-reference)
 
 ---
 
-## Getting Started
+## 1. Getting Started
 
 Object-oriented programming organizes a program into objects. A class defines a type of object, while an instance stores a particular state and can perform operations.
 
@@ -60,25 +74,41 @@ Key ideas include:
 - A **method** performs an operation.
 - A **namespace** organizes related types.
 
-## Project Structure
+**Continue reading:** [Project Structure](#2-project-structure)
+
+## 2. Project Structure
 
 ```text
 DesignPattern/
 ├── Program.cs
 ├── src/
-│   ├── Abstraction/
-│   ├── Encapsulation/
-│   ├── Inheritance/
-│   ├── Polymorphism/
-│   ├── Composition/
-│   └── Coupling/
+│   ├── OopPrinciples/
+│   │   └── ... C# source files ...
+│   └── SOLID/
+│       └── ... C# examples ...
 └── docs/
-    └── README.md
+    ├── README.md
+    ├── SETUP.md
+    ├── UML-Readability-Guide.md
+    ├── OopPrinciples/
+    │   ├── Abstraction/
+    │   ├── Composition/
+    │   ├── Encapsulation/
+    │   ├── Inheritance/
+    │   └── Polymorphism/
+    └── SOLID/
+        ├── D/
+        ├── I/
+        ├── L/
+        ├── O/
+        └── S/
 ```
 
-Each principle folder contains executable source code and a Markdown lesson.
+The `src` folders contain C# code. All Markdown learning material is under `docs`, grouped by OOP principles and SOLID principle.
 
-## Object-Oriented Relationships
+**Continue reading:** [Object-Oriented Relationships](#3-object-oriented-relationships)
+
+## 3. Object-Oriented Relationships
 
 ### `is-a`
 
@@ -128,7 +158,9 @@ classDiagram
     NotificationService --> INotificationChannel
 ```
 
-## UML Reading Guide
+**Continue reading:** [UML Reading Guide](#4-uml-reading-guide)
+
+## 4. UML Reading Guide
 
 | UML symbol | Meaning |
 |---|---|
@@ -140,6 +172,8 @@ classDiagram
 | Unfilled diamond | Aggregation |
 | Arrow | Association or dependency |
 
+**Continue reading:** [Abstraction](OopPrinciples/Abstraction/Abstraction.md)
+
 ---
 
 ## 5. Abstraction
@@ -148,8 +182,9 @@ classDiagram
 
 **Relationship focus:** A caller may have an abstraction service dependency, while the service internally organizes complex work.
 
-**Repository lesson:** [Abstraction.md](../src/Abstraction/Abstraction.md)  
-**Example:** [EmailService.cs](../src/Abstraction/EmailService.cs)
+**Repository lesson:** [Abstraction.md](OopPrinciples/Abstraction/Abstraction.md)
+
+**Example:** [EmailService.cs](../src/OopPrinciples/Abstraction/EmailService.cs)
 
 ```csharp
 emailService.SendEmail();
@@ -163,8 +198,9 @@ The caller does not need to manually connect to the server, authenticate, send, 
 
 **Relationship focus:** A `BankAccount` has a private balance that should not be changed directly.
 
-**Repository lesson:** [Encapsulation.md](../src/Encapsulation/Encapsulation.md)  
-**Examples:** [BankAccount.cs](../src/Encapsulation/BankAccount.cs), [BadBankAccount.cs](../src/Encapsulation/BadBankAccount.cs)
+**Repository lesson:** [Encapsulation.md](OopPrinciples/Encapsulation/Encapsulation.md)
+
+**Examples:** [BankAccount.cs](../src/OopPrinciples/Encapsulation/BankAccount.cs), [BadBankAccount.cs](../src/OopPrinciples/Encapsulation/BadBankAccount.cs)
 
 ```csharp
 BankAccount account = new BankAccount(100);
@@ -176,8 +212,9 @@ decimal balance = account.GetBalance();
 
 **Core idea:** Reuse and specialize behavior through an `is-a` relationship.
 
-**Repository lesson:** [Inheritance.md](../src/Inheritance/Inheritance.md)  
-**Examples:** [Vehicle.cs](../src/Inheritance/Vehicle.cs), [Car.cs](../src/Inheritance/Car.cs), [Bike.cs](../src/Inheritance/Bike.cs)
+**Repository lesson:** [Inheritance.md](OopPrinciples/Inheritance/Inheritance.md)
+
+**Examples:** [Vehicle.cs](../src/OopPrinciples/Inheritance/Vehicle.cs), [Car.cs](../src/OopPrinciples/Inheritance/Car.cs), [Bike.cs](../src/OopPrinciples/Inheritance/Bike.cs)
 
 ```csharp
 public class Car : Vehicle
@@ -194,7 +231,7 @@ Inheritance is appropriate when derived classes are genuine subtypes of the base
 
 **Relationship focus:** A `Car` and `Motorcycle` are both vehicles, so they are polymorphic through the `Vehicle` contract.
 
-**Repository lesson:** [Polymorphism.md](../src/Polymorphism/Polymorphism.md)
+**Repository lesson:** [Polymorphism.md](OopPrinciples/Polymorphism/Polymorphism.md)
 
 ```csharp
 List<Vehicle> vehicles =
@@ -215,7 +252,7 @@ foreach (Vehicle vehicle in vehicles)
 
 **Relationship focus:** A `Car` has an `Engine`; composition models a `has-a` relationship.
 
-**Repository lesson:** [Composition.md](../src/Composition/Composition.md)
+**Repository lesson:** [Composition.md](OopPrinciples/Composition/Composition.md)
 
 ```csharp
 public class Car
@@ -244,6 +281,8 @@ public class Car
 | Change risk | Higher in deep hierarchies | Lower when contracts are small |
 | Example | `Car` is a `Vehicle` | `Car` has an `Engine` |
 
+**Continue reading:** [Fragile Base Class Problem](#11-fragile-base-class-problem)
+
 ## 11. Fragile Base Class Problem
 
 Inheritance can tightly couple derived classes to base-class implementation. A base-class change may unintentionally change derived behavior, making large hierarchies difficult to maintain.
@@ -256,7 +295,19 @@ Reduce the risk by:
 - Applying dependency inversion.
 - Designing extensions through small contracts.
 
-## 12. Examples and Exercises
+**Continue reading:** [SOLID Principles](#solid-principles-at-a-glance)
+
+## SOLID Principles at a Glance
+
+SOLID is a set of five principles for designing cohesive, extensible, and maintainable object-oriented software. Each guide explains the definition, demonstrates the principle, and connects it to available source examples:
+
+- **SRP:** Keep each class focused on one responsibility. The user-registration examples are in [the SRP guide](SOLID/S/SingleResponsibilityPrinciple.md).
+- **OCP:** Extend behavior through abstractions instead of adding branches to stable code. The shape examples are in [the OCP guide](SOLID/O/OpenClosedPrinciple.md).
+- **LSP:** Ensure subtypes honor the behavior promised by their base type. The shape hierarchy is discussed in [the LSP guide](SOLID/L/LiskovSubstitutionPrinciple.md).
+- **ISP:** Keep interfaces focused on the capabilities clients use. See [the ISP guide](SOLID/I/InterfaceSegregationPrinciple.md).
+- **DIP:** Make high-level policy depend on abstractions rather than concrete details. The order-notification example is discussed in [the DIP guide](SOLID/D/DependencyInversionPrinciple.md).
+
+## 17. Examples and Exercises
 
 ### Exercise A: Relationship classifier
 
@@ -280,25 +331,28 @@ Create a notification hierarchy and then replace it with an `INotificationChanne
 
 Choose a base class that has several derived classes. Explain which inherited methods could change unexpectedly and how composition could isolate the behavior.
 
-## Running the Repository
+## 18. Running the Repository
 
-Run these commands from the repository root in PowerShell:
+The project requires the **.NET 10 SDK** and does not rely on third-party libraries. See the [Setup and Run Guide](SETUP.md) for installation, IDE setup, and troubleshooting.
+
+Quick start from the repository root in PowerShell:
 
 ```powershell
 dotnet clean .\DesignPattern\DesignPattern.csproj
 dotnet build .\DesignPattern\DesignPattern.csproj
-dotnet run --project .\DesignPattern\DesignPattern.csproj -- abstraction
+dotnet run --project .\DesignPattern\DesignPattern.csproj -- composition
 ```
 
-Available examples can also be selected by their command-line names, including:
+Run any example by replacing `composition` with one of:
 
 - `encapsulation`
 - `abstraction`
 - `inheritance`
 - `polymorphism`
 - `coupling`
+- `composition`
 
-## Concept Reference
+## 19. Concept Reference
 
 | Concept | Meaning |
 |---|---|
@@ -315,11 +369,16 @@ Available examples can also be selected by their command-line names, including:
 
 ## Suggested Reading Order
 
-1. [Abstraction](../src/Abstraction/Abstraction.md)
-2. [Encapsulation](../src/Encapsulation/Encapsulation.md)
-3. [Inheritance](../src/Inheritance/Inheritance.md)
-4. [Polymorphism](../src/Polymorphism/Polymorphism.md)
-5. [Composition](../src/Composition/Composition.md)
+1. [Abstraction](OopPrinciples/Abstraction/Abstraction.md)
+2. [Encapsulation](OopPrinciples/Encapsulation/Encapsulation.md)
+3. [Inheritance](OopPrinciples/Inheritance/Inheritance.md)
+4. [Polymorphism](OopPrinciples/Polymorphism/Polymorphism.md)
+5. [Composition](OopPrinciples/Composition/Composition.md)
+6. [SRP](SOLID/S/SingleResponsibilityPrinciple.md)
+7. [OCP](SOLID/O/OpenClosedPrinciple.md)
+8. [LSP](SOLID/L/LiskovSubstitutionPrinciple.md)
+9. [ISP](SOLID/I/InterfaceSegregationPrinciple.md)
+10. [DIP](SOLID/D/DependencyInversionPrinciple.md)
 
 ---
 

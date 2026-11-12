@@ -177,3 +177,8 @@ This diagram shows that both `Car` and `Bike` inherit the shared members defined
 ## Summary
 
 Inheritance allows `Car` and `Bike` to reuse common vehicle data and behavior from `Vehicle`. The base class contains shared code, while each derived class can add its own specific features.
+
+---
+
+| ← [Encapsulation](../Encapsulation/Encapsulation.md) | [Book contents](../../README.md) | [Polymorphism](../Polymorphism/Polymorphism.md) → |
+|---|---|---|

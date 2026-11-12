@@ -113,3 +113,8 @@ In this diagram, `+` marks public members and `-` marks private members. `SendEm
 ## Summary
 
 Abstraction allows a program to be used through simple, meaningful operations while complex implementation details remain hidden inside a class. In this example, `SendEmail()` provides a simple public operation that internally connects, authenticates, sends, and disconnects.
+
+---
+
+| [Book contents](../../README.md) | Next: [Encapsulation](../Encapsulation/Encapsulation.md) → |
+|---|---|
