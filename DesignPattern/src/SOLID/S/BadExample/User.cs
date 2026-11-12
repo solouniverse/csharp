@@ -8,6 +8,6 @@ public class User
     public void Register()
     {
         EmailSender emailSender = new EmailSender();
-        emailSender.SendEmail("Welcome to our platform!", Email);
+        emailSender.SendEmail($"{this.Username}, Welcome to our platform!", this.Email);
     }
 }

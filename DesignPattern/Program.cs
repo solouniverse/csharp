@@ -7,9 +7,13 @@ using PolymorphismNamespace = DesignPattern.src.OopPrinciples.Polymorphism;
 using DesignPattern.src.OopPrinciples.Polymorphism.BadExample;
 using InheritanceNamespace = DesignPattern.src.OopPrinciples.Inheritance;
 using DesignPattern.src.OopPrinciples.Inheritance;
-using DesignPattern.src.OopPrinciples.Coupling;
+using CouplingNamespace = DesignPattern.src.OopPrinciples.Coupling;
 using System.Runtime.CompilerServices;
 using CompositionNamespace = DesignPattern.src.OopPrinciples.Composition;
+using SRPNamespace = DesignPattern.src.SOLID.S;
+using LSPNamespace = DesignPattern.src.SOLID.L;
+using DesignPattern.src.SOLID.S.BetterExample;
+// using DesignPattern.src.SOLID.L.BetterExample;
 
 string choice = args.Length > 0
     ? args[0].ToLowerInvariant()
@@ -35,6 +39,26 @@ switch (choice)
     case "composition":
         RunCompositionExample();
         break;
+    // "Single Responsibility Principle (SRP)"
+    case "srp":
+        RunSingleResponsibilityPrincipleExample();
+        break;
+    // "Open/Closed Principle (OCP)"
+    case "ocp":
+        RunOpenClosedPrincipleExample();
+        break;
+    // "Liskove Substitution Principle (LSP)
+    case "lsp":
+        RunLiskovSubstitutionPrincipleExample();
+        break;
+    // Interface Segregation Principle (ISP)
+    case "isp":
+        RunIntefaceSegregationPrincipleExample();
+        break;
+    // "Dependency Inversion Principle (DIP)
+    case "dip":
+        RunDependencyInversionPrincipleExample();
+        break;
     default:
         Console.WriteLine("Unknown choice. Use 'encapsulation' or 'abstraction'.");
         break;
@@ -49,6 +73,11 @@ static string SelectPrinciple()
     Console.WriteLine("4. Polymorphism");
     Console.WriteLine("5. Coupling");
     Console.WriteLine("6. Composition");
+    Console.WriteLine("7. SRP (Single Responsibility Principle)");
+    Console.WriteLine("8. OCP (Open Closed Principle)");
+    Console.WriteLine("9. LSP (Liskov Substitution Principle)");
+    Console.WriteLine("10. ISP (Interface Segregation Principle)");
+    Console.WriteLine("11. DIP (Dependency Inversion Principle)");
     Console.Write("Enter your choice: ");
 
     return Console.ReadLine()?.Trim() switch
@@ -59,6 +88,11 @@ static string SelectPrinciple()
         "4" => "polymorphism",
         "5" => "coupling",
         "6" => "composition",
+        "7" => "srp",
+        "8" => "ocp",
+        "9" => "lsp",
+        "10" => "isp",
+        "11" => "dip",
         _ => "unknown"
     };
 }
@@ -137,10 +171,10 @@ static void RunPolymorphismExample()
 
 static void RunCouplingExample()
 {
-    var order = new Order(new EmailSender());
+    var order = new CouplingNamespace.Order(new CouplingNamespace.EmailSender());
     order.PlaceOrder();
 
-    var order2 = new Order(new SmsSender());
+    var order2 = new CouplingNamespace.Order(new CouplingNamespace.SmsSender());
     order2.PlaceOrder();
 }
 
@@ -148,4 +182,69 @@ static void RunCompositionExample()
 {
     var car = new CompositionNamespace.Car();
     car.StartCar();
+}
+
+static void RunSingleResponsibilityPrincipleExample()
+{
+    Console.WriteLine("Bad example");
+    var user = new SRPNamespace.BadExample.User();
+    user.Email = "solouniverse19@gmail.com";
+    user.Username = "solouniverse";
+
+    user.Register();
+
+    Console.WriteLine("BetterExample");
+    SRPNamespace.BetterExample.User user_better = new SRPNamespace.BetterExample.User();
+    user_better.Email = "solouniverse19@gmail.com";
+    user_better.Username = "solouniverse19";
+
+    UserService userService = new UserService();
+    userService.Register(user_better);
+}
+
+static void RunOpenClosedPrincipleExample()
+{
+    Console.WriteLine("Open/Closed Principle:");
+    Console.WriteLine("A class should be open for extension, but closed for modification.");
+    Console.WriteLine("Example: add a new discount rule without changing the original pricing logic.");
+}
+
+static void RunLiskovSubstitutionPrincipleExample()
+{
+    Console.WriteLine("Bad example");
+    var rect = new LSPNamespace.BadExample.Rectangle();
+    rect.Height = 10;
+    rect.Width = 5;
+    Console.WriteLine($"Expected area: 10 * 5 = {10 * 5}");
+    Console.WriteLine($"Calculated area: {rect.Area}");
+
+    var square = new LSPNamespace.BadExample.Square();
+    square.Width = 10;
+    square.Height = 5;
+    Console.WriteLine($"Expected area: 10 * 5 = {10 * 5}");
+    Console.WriteLine($"Calculated area: {square.Area}");
+
+    Console.WriteLine("Better example");
+    var rectangle = new LSPNamespace.BetterExample.Rectangle();
+    rectangle.Width = 10;
+    rectangle.Height = 5;
+    Console.WriteLine($"Expected area: 10 * 5 = {10 * 5}");
+    Console.WriteLine($"Calculated area: {rectangle.Area}");
+
+    var sq = new LSPNamespace.BetterExample.Square();
+    sq.Side = 5;
+    Console.WriteLine($"Expected area: 5 * 5 = {5 * 5}");
+    Console.WriteLine($"Calculated area: {sq.Area}");
+}
+
+static void RunIntefaceSegregationPrincipleExample()
+{
+    Console.WriteLine("Interface Segregation Principle:");
+    Console.WriteLine("Clients should not be forced to implement methods they do not use.");
+    Console.WriteLine("Example: split large interfaces into smaller, more specific ones.");
+}
+
+static void RunDependencyInversionPrincipleExample()
+{
+
 }
