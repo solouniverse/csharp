@@ -5,6 +5,9 @@
             "label": "build BeginC#",
             "type": "process",
             "command": "dotnet",
+            "osx": {
+                "command": "/usr/local/share/dotnet/dotnet"
+            },
             "args": [
                 "build",
                 "${workspaceFolder}/BeginC#/BeginC#.csproj"
@@ -15,6 +18,9 @@
             "label": "build DesignPattern",
             "type": "process",
             "command": "dotnet",
+            "osx": {
+                "command": "/usr/local/share/dotnet/dotnet"
+            },
             "args": [
                 "build",
                 "${workspaceFolder}/DesignPattern/DesignPattern.csproj"
