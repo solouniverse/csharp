@@ -1,19 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DesignPattern.src.OopPrinciples.Abstraction;
 using DesignPattern.src.OopPrinciples.Encapsulation;
 using PolymorphismNamespace = DesignPattern.src.OopPrinciples.Polymorphism;
-using DesignPattern.src.OopPrinciples.Polymorphism.BadExample;
 using InheritanceNamespace = DesignPattern.src.OopPrinciples.Inheritance;
-using DesignPattern.src.OopPrinciples.Inheritance;
 using CouplingNamespace = DesignPattern.src.OopPrinciples.Coupling;
-using System.Runtime.CompilerServices;
 using CompositionNamespace = DesignPattern.src.OopPrinciples.Composition;
 using SRPNamespace = DesignPattern.src.SOLID.S;
 using LSPNamespace = DesignPattern.src.SOLID.L;
-using DesignPattern.src.SOLID.S.BetterExample;
-// using DesignPattern.src.SOLID.L.BetterExample;
+using OCPNamespace = DesignPattern.src.SOLID.O;
+using ISPNamespace = DesignPattern.src.SOLID.I;
+using DIPNamespace = DesignPattern.src.SOLID.D;
 
 string choice = args.Length > 0
     ? args[0].ToLowerInvariant()
@@ -198,15 +194,45 @@ static void RunSingleResponsibilityPrincipleExample()
     user_better.Email = "solouniverse19@gmail.com";
     user_better.Username = "solouniverse19";
 
-    UserService userService = new UserService();
+    SRPNamespace.BetterExample.UserService userService = new SRPNamespace.BetterExample.UserService();
     userService.Register(user_better);
 }
 
 static void RunOpenClosedPrincipleExample()
 {
-    Console.WriteLine("Open/Closed Principle:");
-    Console.WriteLine("A class should be open for extension, but closed for modification.");
-    Console.WriteLine("Example: add a new discount rule without changing the original pricing logic.");
+    Console.WriteLine("Open/Closed Principle: Bad example");
+    OCPNamespace.BadExample.Shape circle = new OCPNamespace.BadExample.Shape();
+    circle.Type = OCPNamespace.BadExample.ShapeType.Circle;
+    circle.Radius = 2;
+
+    double area_circle = circle.CalculateArea();
+    Console.WriteLine($"Aread of circle: {area_circle}");
+
+    OCPNamespace.BadExample.Shape rectangle = new OCPNamespace.BadExample.Shape();
+    rectangle.Type = OCPNamespace.BadExample.ShapeType.Rectangle;
+    rectangle.Length = 4;
+    rectangle.Width = 4;
+
+    double area_rectangle = rectangle.CalculateArea();
+    Console.WriteLine($"Area of rectangle: {area_circle}");
+
+    Console.WriteLine("Open/Closed Principle: Better example");
+    OCPNamespace.BetterExample.Circle circle1 = new OCPNamespace.BetterExample.Circle();
+    circle1.Radius = 2;
+    double area_circle1 = circle.CalculateArea();
+    Console.WriteLine($"Area of circle: {area_circle1}");
+
+    OCPNamespace.BetterExample.Rectangle rectangle1 = new OCPNamespace.BetterExample.Rectangle();
+    rectangle1.Length = 5;
+    rectangle1.Width = 3;
+    double area_rectangle1 = rectangle1.CalculateArea();
+    Console.WriteLine($"Area of rectangle: {area_rectangle1}");
+
+    OCPNamespace.BetterExample.Triangle triangle1 = new OCPNamespace.BetterExample.Triangle();
+    triangle1.Base = 2;
+    triangle1.Height = 5;
+    double area_triangle1 = triangle1.CalculateArea();
+    Console.WriteLine($"Area triangle: {area_triangle1}");
 }
 
 static void RunLiskovSubstitutionPrincipleExample()
@@ -239,12 +265,44 @@ static void RunLiskovSubstitutionPrincipleExample()
 
 static void RunIntefaceSegregationPrincipleExample()
 {
-    Console.WriteLine("Interface Segregation Principle:");
-    Console.WriteLine("Clients should not be forced to implement methods they do not use.");
-    Console.WriteLine("Example: split large interfaces into smaller, more specific ones.");
+    // var circle = new ISPNamespace.BadExample.Circle(radius: 1);
+    ISPNamespace.BadExample.Circle circle = new ISPNamespace.BadExample.Circle();
+    circle.Radius = 3;
+    double area_circle = circle.Area();
+    Console.WriteLine($"Area of circle: {area_circle}");
+    // System.Console.WriteLine($"Volume of circle: {circle.Volume()}");
+
+    ISPNamespace.BadExample.Sphere sphere = new ISPNamespace.BadExample.Sphere();
+    sphere.Radius = 4;
+    double area_sphere = sphere.Area();
+    double volume_sphere = sphere.Volume();
+
+    Console.WriteLine($"Area of sphere: {area_sphere}");
+    Console.WriteLine($"Volume of sphere: {volume_sphere}");
+
+    ISPNamespace.BetterExample.Circle circle2 = new ISPNamespace.BetterExample.Circle();
+    circle2.Radius = 3;
+    double area_circle2 = circle2.Area();
+    Console.WriteLine($"Area of circle: {area_circle2}");
+
+    ISPNamespace.BetterExample.Sphere sphere2 = new ISPNamespace.BetterExample.Sphere();
+    sphere2.Radius = 4;
+    double area_sphere2 = sphere2.Area();
+    double volume_sphere2 = sphere2.Volume();
+    Console.WriteLine($"Area of sphere: {area_sphere2}");
+    Console.WriteLine($"Volume of sphere: {volume_sphere2}");
 }
 
 static void RunDependencyInversionPrincipleExample()
 {
+    DIPNamespace.BadExample.Car car = new DIPNamespace.BadExample.Car();
+    car.Start();
 
+    DIPNamespace.BetterExample.Engine engine1 = new DIPNamespace.BetterExample.Engine();
+    DIPNamespace.BetterExample.Car car1 = new DIPNamespace.BetterExample.Car(engine1);
+    car1.StartCar();
+
+    DIPNamespace.BetterExample.ElectricEngine electricEngine = new DIPNamespace.BetterExample.ElectricEngine();
+    DIPNamespace.BetterExample.Car car2 = new DIPNamespace.BetterExample.Car(electricEngine);
+    car2.StartCar();
 }
